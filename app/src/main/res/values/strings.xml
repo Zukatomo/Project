@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Project</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment2</string>
+    <string name="hello_blank_fragment1">Hello blank fragment1</string>
+    <string name="bottom_nav_item_list">Profile</string>
+    <string name="bottom_nav_item_profile">Profile</string>
+    <string name="shared_preferences_name">SPDKS</string>
 </resources>
