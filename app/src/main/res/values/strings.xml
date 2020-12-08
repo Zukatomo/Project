@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">Project</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment2</string>
-    <string name="hello_blank_fragment1">Hello blank fragment1</string>
-    <string name="bottom_nav_item_list">Profile</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bottom_nav_item_list">List</string>
     <string name="bottom_nav_item_profile">Profile</string>
-    <string name="shared_preferences_name">SPDKS</string>
+    <string name="shared_preferences_name">Project.xml</string>
+    <string name="recycle_view_item_restaurant_image_description">Image</string>
+    <string name="restaurant_button_set_favorite">Make Favorite</string>
+    <string name="restaurant_button_unset_favorite">Remove from favorites</string>
 </resources>
