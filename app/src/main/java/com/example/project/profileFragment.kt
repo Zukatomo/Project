@@ -1,19 +1,23 @@
 package com.example.project
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
-import android.content.Context.MODE_PRIVATE
+import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -26,6 +30,12 @@ class profileFragment : Fragment() {
 
 
     }
+    private fun pickImageFromGallery() {
+        //Intent to pick image
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, 1000)
+    }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -36,9 +46,23 @@ class profileFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK && requestCode == 1000){
+            preferences.let {
+                val editor:SharedPreferences.Editor = it.edit()
+                editor.putString("img",data?.dataString)
+                editor.commit()
+            }
+            Glide.with(this).load(data?.dataString).into(requireActivity().findViewById<ImageView>(R.id.image_view_profile_avatar))
+        }
+    }
+
     @SuppressLint("WrongConstant")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        requireActivity().findViewById<Button>(R.id.uploadImage).setOnClickListener{
+            pickImageFromGallery()
+        }
         requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView).visibility =View.VISIBLE
         requireActivity().findViewById<Button>(R.id.button_profile_save).setOnClickListener {
             saveData();
@@ -53,6 +77,7 @@ class profileFragment : Fragment() {
         preferences.getString("address","No Address")?.let { requireActivity().findViewById<EditText>(R.id.edit_text_text_profile_address).setText(it) }
         preferences.getString("phone","No Phone number")?.let { requireActivity().findViewById<EditText>(R.id.edit_text_text_profile_phone).setText(it) }
         preferences.getString("email","No Email")?.let { requireActivity().findViewById<EditText>(R.id.edit_text_text_profile_email).setText(it) }
+        preferences.getString("img","")?.let {Glide.with(this).load(it).into(requireActivity().findViewById<ImageView>(R.id.image_view_profile_avatar))}
     }
 
     fun saveData(){

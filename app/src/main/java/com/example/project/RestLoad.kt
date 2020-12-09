@@ -10,6 +10,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RestLoad{
     lateinit var api:Api
     lateinit var eventEmmitRecAdapter: ()->Unit
+
+    var countryList = listOf<String>("US","AW","CA","CN","GP","HK","KN","KY","MO","MX","MY","SV","VI")
+    private var currentCountry = "US"
     var restaurants: List<RestaurantData> = listOf()
     init{
         Log.e("RestLoad","Created")
@@ -24,9 +27,35 @@ object RestLoad{
         api = retrofit.create(Api::class.java)
     }
 
+    fun setCountry(c:Int){
+        currentCountry = countryList[c]
+        restaurants = listOf()
+        getCP(currentCountry){}
+    }
+
+
     fun setEvent(x:()->Unit){
         eventEmmitRecAdapter = x
     }
+
+    fun getByName(name:String){
+        restaurants = listOf()
+        api.getRestaurantsByName(name).enqueue(object: Callback<ResponseData>{
+            override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
+                if(response.isSuccessful && response.body() !=null){
+                    restaurants += response.body()!!.restaurants
+                    if(RestLoad::eventEmmitRecAdapter.isInitialized){
+                        eventEmmitRecAdapter()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseData>, t: Throwable) {
+                Log.e("RestLoad", t.toString())
+            }
+        })
+    }
+
 
     fun getCP(county:String, func:()->Unit){
         api.getRestaurants(county, restaurants.size/25+1).enqueue(object: Callback<ResponseData>{
@@ -55,7 +84,6 @@ object RestLoad{
                 }
             }
             override fun onFailure(call: Call<RestaurantData>, t: Throwable) {
-                TODO("Not yet implemented")
             }
         })
     }

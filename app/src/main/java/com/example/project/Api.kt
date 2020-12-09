@@ -11,6 +11,8 @@ interface Api {
     fun getStats(): Call<JSONArray>
     @GET("restaurants")
     fun getRestaurants(@Query("country")state:String, @Query("page")page:Int): Call<ResponseData>
+    @GET("restaurants")
+    fun getRestaurantsByName(@Query("name")state:String): Call<ResponseData>
     @GET("restaurants/{id}")
     fun getRestaurantById(@Path("id")id:Int): Call<RestaurantData>
 

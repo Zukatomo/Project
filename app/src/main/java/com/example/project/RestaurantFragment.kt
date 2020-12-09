@@ -1,23 +1,24 @@
 package com.example.project
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.LinearLayout
-import androidx.annotation.RestrictTo
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.lifecycleScope
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.SearchView
+import android.widget.Spinner
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+
 
 class RestaurantFragment : Fragment() {
+
+    private lateinit var dropdown: Spinner
+    private lateinit var search:SearchView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +39,29 @@ class RestaurantFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        search = requireActivity().findViewById<SearchView>(R.id.simpleSearchView)
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                RestLoad.getByName(query)
+                return false
+            }
+            override fun onQueryTextChange(newText: String): Boolean {
+                return true
+            }
+        })
+        dropdown = requireActivity().findViewById<Spinner>(R.id.restaurantSpinner)
+        val adapter: ArrayAdapter<String>? = context?.let { ArrayAdapter<String>(it, android.R.layout.simple_spinner_dropdown_item, RestLoad.countryList) }
+        dropdown.setAdapter(adapter);
+        dropdown.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                RestLoad.setCountry(position)
+            }
+
+        }
         requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView).visibility =
             View.VISIBLE
         val recyclerView=view?.findViewById<RecyclerView>(R.id.list_recycler_view)
