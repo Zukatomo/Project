@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:android="http://schemas.android.com/apk/res/android">
+
+<item
+    android:id="@+id/restaurantFragment"
+    android:icon="@drawable/ic_baseline_view_list_24"
+    android:title="@string/bottom_nav_item_list" />
+<item
+    android:id="@+id/profileFragment"
+    android:icon="@drawable/ic_baseline_person_24"
+    android:title="@string/bottom_nav_item_profile" />
+</menu>

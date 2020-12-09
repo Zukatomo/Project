@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".RestaurantDetailsFragment">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/item_restaurant_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/recycle_view_item_restaurant_image_description"
+            android:cropToPadding="false"
+            android:maxHeight="256dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/restimage" />
+
+
+        <TextView
+            android:id="@+id/RDtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:paddingLeft="16dp"
+            android:text="RCIM"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/RDprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:paddingLeft="16dp"
+            android:text="RCIM"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/RDaddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:paddingLeft="16dp"
+            android:text="RCIM"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/RDcity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:paddingLeft="16dp"
+            android:text="RCIM"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/RDarea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:paddingLeft="16dp"
+            android:text="RCIM"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/RDstate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:paddingLeft="16dp"
+            android:text="RCIM"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/RDzip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:paddingLeft="16dp"
+            android:text="RCIM"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/RDphone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:paddingLeft="16dp"
+            android:text="RCIM"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/RDcoord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:paddingLeft="16dp"
+            android:text="RCIM"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/RDweb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:paddingLeft="16dp"
+            android:text="RCIM"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:icon="@drawable/ic_baseline_map_24" />
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:icon="@drawable/ic_baseline_local_phone_24" />
+        </LinearLayout>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</FrameLayout>
