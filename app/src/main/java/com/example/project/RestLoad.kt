@@ -1,7 +1,6 @@
 package com.example.project
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.*
@@ -11,8 +10,8 @@ object RestLoad{
     lateinit var api:Api
     lateinit var eventEmmitRecAdapter: ()->Unit
 
-    var countryList = listOf<String>("US","AW","CA","CN","GP","HK","KN","KY","MO","MX","MY","SV","VI")
-    private var currentCountry = "US"
+    var countryList = listOf<String>("RO","US")
+    private var currentCountry = "RO"
     var restaurants: List<RestaurantData> = listOf()
     init{
         Log.e("RestLoad","Created")
@@ -76,7 +75,7 @@ object RestLoad{
         })
     }
 
-    fun getByID(id:Int, func:(RestaurantData)->Unit){
+    fun getByID(id: Long, func:(RestaurantData)->Unit){
         api.getRestaurantById(id).enqueue(object: Callback<RestaurantData>{
             override fun onResponse(call: Call<RestaurantData>, response: Response<RestaurantData>) {
                 if(response.isSuccessful && response.body() !=null){

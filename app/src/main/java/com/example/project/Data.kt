@@ -11,7 +11,7 @@ data class ResponseData(
 )
 
 data class RestaurantData(
-    val id:Int,
+    val id:Long,
     val name:String,
     val address:String,
     val city: String,

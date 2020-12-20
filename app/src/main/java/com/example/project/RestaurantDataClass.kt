@@ -5,6 +5,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "FavoriteRestaurants")
 data class RestaurantDataClass(
-        @PrimaryKey(autoGenerate = false) val id:Int,
+        @PrimaryKey(autoGenerate = false) val id: Long,
         var images:String
 )

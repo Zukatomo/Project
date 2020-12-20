@@ -14,9 +14,9 @@ interface Api {
     @GET("restaurants")
     fun getRestaurantsByName(@Query("name")state:String): Call<ResponseData>
     @GET("restaurants/{id}")
-    fun getRestaurantById(@Path("id")id:Int): Call<RestaurantData>
+    fun getRestaurantById(@Path("id") id: Long): Call<RestaurantData>
 
     companion object{
-        const val BASE_URL = "https://opentable.herokuapp.com/api/"
+        const val BASE_URL = "https://ratpark-api.imok.space/"
     }
 }

@@ -10,11 +10,11 @@ import androidx.room.*
         suspend fun insertRestaurant(restaurant: RestaurantDataClass)
 
         @Query("SELECT * FROM FavoriteRestaurants WHERE id = :id")
-        suspend fun findRestaurantById(id: Int): RestaurantDataClass?
+        suspend fun findRestaurantById(id: kotlin.Long): RestaurantDataClass?
 
         @Update
         suspend fun updateById(restaurant: RestaurantDataClass)
 
     @Query("DELETE FROM FavoriteRestaurants  WHERE id = :id")
-    fun deleteById(id: Int)
+    fun deleteById(id: Long)
     }

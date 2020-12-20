@@ -68,7 +68,7 @@ class RestaurantFragment : Fragment() {
         recyclerView?.adapter = AwesomeRecAdapter(requireContext())
         recyclerView?.layoutManager = LinearLayoutManager(context)
         recyclerView?.initPagination(){
-            RestLoad.getCP("US"){}
+            RestLoad.getCP("RO"){}
         }
         RestLoad.setEvent {
             (recyclerView?.adapter as AwesomeRecAdapter).notifyDataSetChanged()

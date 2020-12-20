@@ -2,7 +2,6 @@ package com.example.project
 
 import android.app.Activity
 import android.content.Intent
-import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -43,7 +42,7 @@ class RestaurantDetailsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         adapter = FavoriteAdapter()
-        arguments?.getInt("Recid")?.let {
+        arguments?.getLong("Recid")?.let {
             GlobalScope.launch {
                 try {
                     rdc = context?.let { it1 -> RestaurantDatabase.getDatabase(it1).restaurantDao().findRestaurantById(it) }!!
