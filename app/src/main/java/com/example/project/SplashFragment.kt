@@ -33,7 +33,7 @@ class splashFragment : Fragment() {
         requireActivity().runOnUiThread(Runnable {
             // Stuff that updates the UI
         })
-        RestLoad.getCP("US"){
+        RestLoad.getCP("RO"){
             findNavController().navigate(
                 splashFragmentDirections.splashDone()
             )
